@@ -9,6 +9,20 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+[Ll]ibrary/
+[Ll]ibrary/*
+/Temp/
+/Build/
+/obj/
+/Builds/
+/Logs/
+.idea/
+.vs/
+*.csproj
+*.sln
+*.user
+*.userprefs
+
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
