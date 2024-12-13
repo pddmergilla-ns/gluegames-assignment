@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Bullet bulletUsed;
     [SerializeField] private EffectManager effectManager;
 
-    [SerializeField] private Joystick movementJoystick;
-    [SerializeField] private Joystick attackJoystick;
+    [SerializeField] private JoystickController movementJoystick;
+    [SerializeField] private JoystickController attackJoystick;
 
     private Vector2 moveInput;
     private Vector2 attackInput;
