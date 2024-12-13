@@ -40,11 +40,14 @@ public class ObjectPool : MonoBehaviour
                     break;
 
                 default:
-                    
+
                     break;
             }
 
+            Debug.Log("objISpawn: " + objISpawn);
             var objTag = objISpawn.Tag;
+            Debug.Log("prefab: " + entry.prefab.name);
+            Debug.Log("objTag: " + objTag);
             poolDictionary.Add(objTag, objectQueue);
         }
     }
@@ -57,11 +60,9 @@ public class ObjectPool : MonoBehaviour
             return null;
         }
 
-        Debug.Log(tag + " pool count: " + poolDictionary[tag].Count);
         if (poolDictionary[tag].Count == 0)
         {
             // Optionally expand the pool dynamically
-            Debug.Log("Creating new object in pool: " + tag);
             foreach (var entry in poolEntries)
             {
                 var objTag = entry.prefab.GetComponent<ISpawn>().Tag;

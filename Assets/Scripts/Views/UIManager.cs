@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject endGameScreen;
     [SerializeField] private Button restartButton;
 
-     private void Awake()
+    private void Awake()
     {
         if (restartButton != null)
         {
@@ -36,9 +36,8 @@ public class UIManager : MonoBehaviour
         endGameScreen.GetComponentInChildren<TextMeshProUGUI>().text = playerWon ? "You Win!" : "You Dieded";
     }
 
-     private void RestartGame()
+    private void RestartGame()
     {
-        // Reload the current scene to restart the game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

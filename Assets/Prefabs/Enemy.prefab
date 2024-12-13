@@ -145,4 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   speed: 2
-  _tag: NormalEnemy
+  nameTag: NormalEnemy

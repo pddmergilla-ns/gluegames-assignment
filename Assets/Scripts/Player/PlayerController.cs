@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,19 +6,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private ObjectPool bulletPool;
 
-    [SerializeField] private Joystick movementJoystick;
-    [SerializeField] private Joystick attackJoystick;
-
-    [SerializeField] private float shootingCooldown = 0.5f; 
+    [SerializeField] private float shootingCooldown = 0.5f;
     [SerializeField] private Bullet bulletUsed;
     [SerializeField] private EffectManager effectManager;
 
-    
+    [SerializeField] private Joystick movementJoystick;
+    [SerializeField] private Joystick attackJoystick;
+
     private Vector2 moveInput;
     private Vector2 attackInput;
-    private float shootingCooldownTime; 
+    private float shootingCooldownTime;
 
-    void Start() 
+    void Start()
     {
         ResetShootingCooldown();
     }
@@ -30,22 +28,22 @@ public class PlayerController : MonoBehaviour
         HandleAttack();
     }
 
-    public void PlayerDiedEffect () 
+    public void PlayerDiedEffect()
     {
         effectManager.PlayPlayerDeathEffect(transform.position);
     }
 
     private void HandleMovement()
     {
-
-        moveInput = new Vector2(movementJoystick.Horizontal, movementJoystick.Vertical);
+        moveInput = new Vector2(movementJoystick.InputDirection.x, movementJoystick.InputDirection.y);
         transform.Translate(moveInput.normalized * moveSpeed * Time.deltaTime);
     }
 
     private void HandleAttack()
     {
-        attackInput = new Vector2(attackJoystick.Horizontal, attackJoystick.Vertical);
+        attackInput = new Vector2(attackJoystick.InputDirection.x, attackJoystick.InputDirection.y);
         shootingCooldownTime -= Time.deltaTime;
+
         if (attackInput != Vector2.zero && shootingCooldownTime <= 0)
         {
             Shoot();
@@ -60,7 +58,7 @@ public class PlayerController : MonoBehaviour
         bullet.GetComponent<Bullet>().Initialize(attackInput.normalized, bulletPool, effectManager);
     }
 
-    private void ResetShootingCooldown() 
+    private void ResetShootingCooldown()
     {
         shootingCooldownTime = shootingCooldown;
     }

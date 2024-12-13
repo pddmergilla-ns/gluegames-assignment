@@ -4,7 +4,7 @@ public class NormalEnemy : Enemy
 {
     [SerializeField] private int health = 3;
     [SerializeField] private float speed = 3f;
-    [SerializeField] private string _tag;
+    [SerializeField] private string nameTag;
     private Transform player;
     private ObjectPool pool;
 
@@ -20,7 +20,7 @@ public class NormalEnemy : Enemy
         player = playerTransform;
         pool = objectPool;
         actualHealth = maxHealth;
-        Tag = _tag;
+        Tag = nameTag;
         this.gameManager = gameManager;
         this.effectManager = effectManager;
     }
@@ -36,7 +36,7 @@ public class NormalEnemy : Enemy
         if (actualHealth <= 0)
         {
             effectManager.PlayEnemyDeathEffect(transform.position);
-            
+
             pool.ReturnObject(Tag, gameObject);
             gameManager.EnemyKilled();
         }
